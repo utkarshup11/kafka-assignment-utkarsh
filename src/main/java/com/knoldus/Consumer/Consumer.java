@@ -39,9 +39,10 @@ public class Consumer {
                 for (ConsumerRecord<String, User> message : messages) {
                     ObjectMapper objectMapper = new ObjectMapper();
                     String jsonObject = objectMapper.writeValueAsString(message.value());
-                    FileWriter fileWriter = new FileWriter("output.txt");
+                    FileWriter fileWriter = new FileWriter("output.txt" , true);
                     System.out.println(jsonObject);
                     fileWriter.write(jsonObject);
+                    fileWriter.write("\n");
                     fileWriter.close();
                 }
 
